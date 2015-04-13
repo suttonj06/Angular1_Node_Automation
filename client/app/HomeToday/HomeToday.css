@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'digi';
+}
+
+.clock {
+  font-family: 'digi';
+  font-size:70px;
+  color: white;
+}
+
+.weather {
+  color: white;
+}

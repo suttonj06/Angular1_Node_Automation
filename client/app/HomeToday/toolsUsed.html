@@ -1,0 +1,10 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="hero-unit"> {{myText}}</div>
+<div class="row">
+	<div class='col col-sm-4 col-sm-offset-4 list-group'>
+		<div ng-repeat="tool in toolsUsed" class="list-group-item">
+			{{tool}}
+		</div>
+	</div>
+</div>
