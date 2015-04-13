@@ -14,7 +14,7 @@ angular.module('homeNetApp')
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-                var key = 'cefedce10ed4e529'; //Please see http://www.wunderground.com/
+                var key = 'api_KEY'; //Please see http://www.wunderground.com/
                 var service_url = "http://api.wunderground.com/api/" + key + "/forecast/geolookup/conditions/q/" + position.coords.latitude + "," + position.coords
                 .longitude + ".json?callback=JSON_CALLBACK";
                 $http.jsonp(service_url).success(function(data) {
