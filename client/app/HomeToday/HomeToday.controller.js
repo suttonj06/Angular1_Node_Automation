@@ -1,44 +1,41 @@
 'use strict';
 
 angular.module('homeNetApp')
-.controller('HomeTodayCtrl', function ($scope, $timeout, $http, dateFilter) {
+    .controller('HomeTodayCtrl', function($scope, $timeout, $http, dateFilter, WeatherService) {
 
-  $scope.updateTime = function(){
-    $timeout(function(){
-      $scope.theclock = (dateFilter(new Date(), 'hh:mm:ss'));
-      $scope.updateTime();
-    },1000);
-  };
-  
-  $scope.updateTime();
+        $scope.updateTime = function() {
+            $timeout(function() {
+                $scope.theclock = (dateFilter(new Date(), 'hh:mm:ss'));
+                $scope.updateTime();
+            }, 1000);
+        };
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-                var key = 'api_KEY'; //Please see http://www.wunderground.com/
-                var service_url = "http://api.wunderground.com/api/" + key + "/forecast/geolookup/conditions/q/" + position.coords.latitude + "," + position.coords
-                .longitude + ".json?callback=JSON_CALLBACK";
-                $http.jsonp(service_url).success(function(data) {
-                  $scope.city = data.location.city;
-                  var day = [];
-                  for(var i = 0; i < 4; i++)
-                  {
-                    day.push(
-                    {image : data.forecast.simpleforecast.forecastday[i].icon_url,
-                      high_f : data.forecast.simpleforecast.forecastday[i].high.fahrenheit,
-                      low_f : data.forecast.simpleforecast.forecastday[i].low.fahrenheit,
-                      humidity : data.forecast.simpleforecast.forecastday[i].avehumidity,
-                      description : data.forecast.simpleforecast.forecastday[i].conditions});
-                  }
-                  //console.log(day);
-                  $scope.everyday = day;
+
+        $scope.updateTime();
+
+        WeatherService.getData(getWeatherSuccess, getWeatherFail);
+
+
+        function getWeatherSuccess(data) {
+            $scope.city = data.location.city;
+            var day = [];
+            for (var i = 0; i < 4; i++) {
+                day.push({
+                    image: data.forecast.simpleforecast.forecastday[i].icon_url,
+                    high_f: data.forecast.simpleforecast.forecastday[i].high.fahrenheit,
+                    low_f: data.forecast.simpleforecast.forecastday[i].low.fahrenheit,
+                    humidity: data.forecast.simpleforecast.forecastday[i].avehumidity,
+                    description: data.forecast.simpleforecast.forecastday[i].conditions
                 });
-              }, function() {
-                alert("That's weird! We couldn't find you!");
-              });
-} else {
-  alert('Geolocation is not supported');
-}
-});
+            }
+            //console.log(day);
+            $scope.everyday = day;
+        };
+
+        function getWeatherFail() {
+            console.log('Failed to get weather!');
+        };
+    });
 
 
 /*
