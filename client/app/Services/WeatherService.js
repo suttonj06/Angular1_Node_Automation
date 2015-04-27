@@ -1,13 +1,10 @@
-
-
-
 (function() {
     'use strict';
 
     angular.module('homeNetApp')
         .factory('WeatherService', function($http) {
         	var url,
-            	key = '<key', //Please see http://www.wunderground.com/
+            	key = '<key>', //Please see http://www.wunderground.com/
             	data,
             	successCallback,
             	errorCallback,

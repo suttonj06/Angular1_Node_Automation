@@ -25,7 +25,8 @@ angular.module('homeNetApp')
                     high_f: data.forecast.simpleforecast.forecastday[i].high.fahrenheit,
                     low_f: data.forecast.simpleforecast.forecastday[i].low.fahrenheit,
                     humidity: data.forecast.simpleforecast.forecastday[i].avehumidity,
-                    description: data.forecast.simpleforecast.forecastday[i].conditions
+                    description: data.forecast.simpleforecast.forecastday[i].conditions,
+                    weekday: data.forecast.simpleforecast.forecastday[i].date.weekday
                 });
             }
             //console.log(day);

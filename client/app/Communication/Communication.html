@@ -1,0 +1,7 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="row">
+    <div class="col col-sm-12">{{message}}</div>
+    <textarea class="col col-sm-6" ng-model="messageText" required></textarea>
+    <input type="textbox" ng-model="receipient" required/>
+    <div ng-click="sendMessage()" class="btn btn-primary">Send</div>
+</div>

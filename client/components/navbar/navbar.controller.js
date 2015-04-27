@@ -3,8 +3,8 @@
 angular.module('homeNetApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
+      /*'title': 'Home',
+      'link': '/'*/
     }];
 
     $scope.isCollapsed = true;
