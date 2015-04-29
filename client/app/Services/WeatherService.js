@@ -2,12 +2,10 @@
     'use strict';
 
     angular.module('homeNetApp')
-        .factory('WeatherService', function($http) {
+        .factory('WeatherService', function($http, $q) {
         	var url,
             	key = '<key>', //Please see http://www.wunderground.com/
             	data,
-            	successCallback,
-            	errorCallback,
 	            service = {
 	            	/**
 	            	 * @param success callback
@@ -18,13 +16,15 @@
 
             return service;
 
+            var _deffered;
+
             function _getWeather() {
             	return $http.jsonp(url)
             		.success(function(data) {
-            			successCallback(data);
+            			_deffered.resolve(data); //notify promise is successful
             		})
             		.error(function() {
-            			errorCallback();
+            			_deffered.reject('Error occured');
             		});
             };
 
@@ -41,14 +41,20 @@
              * @param success callback
              * @param failure callback
              */
-            function _getLocation(_successCB, _errorCB) {
-            	successCallback = _successCB;
-            	errorCallback = _errorCB;
+            function _getLocation() {
+                if(_deffered) {
+                    return _deffered.promise;
+                }
+
+                _deffered = $q.defer(); //creates an object that can return a promise
+
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(_geoSuccess, _geoFail)
                 } else {
                     alert('Geolocation is not supported');
                 }
+
+                return _deffered.promise;
             };
         })
 })();

@@ -1,7 +1,16 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="row">
-    <div class="col col-sm-12">{{message}}</div>
-    <textarea class="col col-sm-6" ng-model="messageText" required></textarea>
-    <input type="textbox" ng-model="receipient" required/>
-    <div ng-click="sendMessage()" class="btn btn-primary">Send</div>
+<div id="MessageSection">
+	<div id="recipientSection">
+		To:
+		<input id="recipientText" type="textbox" placeholder="Recipient Phone #" ng-model="receipient" required/>
+	</div>
+	<div id="messageTextSection">
+		<div>Inbox:</div>
+		<div id="inboxText" ng-bind-html="message"></div>
+	</div>
+	<div id="messageInputSection">
+		<div>Message:<div>
+		<textarea id="textInput" ng-model="messageText" placeholder="Type Message Here..." required></textarea>
+		<div ng-click="sendMessage()" class="btn btn-danger">Send</div>
+	</div>
 </div>

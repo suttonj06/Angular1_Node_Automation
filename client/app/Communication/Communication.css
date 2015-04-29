@@ -1,0 +1,33 @@
+#MessageSection 
+{
+	color: white;
+	margin: 2em;
+}
+
+#inboxText
+{
+	color: black;
+	width: 20em;
+	height: 20em;
+	background-color: white;
+	margin-left: 5em;
+	margin-bottom: 2em;
+	padding: 0.5em;
+	border: 0.5em solid gray;
+}
+
+#textInput
+{
+	color: black;
+	margin-left: 5em;
+	width: 20em;
+	height: 5em;
+}
+
+#recipientText 
+{
+	color: black;
+	margin-bottom: 2em;
+	margin-left: 3em;
+	width: 10em;
+}
