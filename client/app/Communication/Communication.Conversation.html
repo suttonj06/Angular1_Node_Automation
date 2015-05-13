@@ -1,0 +1,8 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="MessageSection">
+Text Message Conversations From:
+<div ng-repeat="conversation in allConversations">
+	<a ng-href="Communication/texts/{{conversation.conversation.id}}">{{conversation.conversation.phone_number}}</a>
+</div>
+</div>

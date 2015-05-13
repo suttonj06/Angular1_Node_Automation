@@ -2,15 +2,20 @@
 <div id="MessageSection">
 	<div id="recipientSection">
 		To:
-		<input id="recipientText" type="textbox" placeholder="Recipient Phone #" ng-model="receipient" required/>
+		<input id="recipientText" type="textbox" placeholder="Recipient Phone #" ng-model="message.recipient" required/>
 	</div>
-	<div id="messageTextSection">
-		<div>Inbox:</div>
-		<div id="inboxText" ng-bind-html="message"></div>
+	<div ng-repeat="sentMessage in chat">
+		<div>
+			{{sentMessage.message_text}}
+		</div>
 	</div>
+
 	<div id="messageInputSection">
-		<div>Message:<div>
-		<textarea id="textInput" ng-model="messageText" placeholder="Type Message Here..." required></textarea>
-		<div ng-click="sendMessage()" class="btn btn-danger">Send</div>
+		<div>Message:
+			<div>
+				<textarea id="textInput" ng-model="message.text" placeholder="Type Message Here..." required></textarea>
+				<input type="button" ng-click="sendMessage()" class="btn btn-danger" value="Send"></input>
+			</div>
+		</div>
 	</div>
 </div>
