@@ -1,4 +1,4 @@
-# Angular1_Node_Voice_Automation
+# Angular1 Node Voice Automation
 HomeNet is a home automation network that allows you to incorporate all your home automation tasks into one central, easy to use location.  The idea is to control everything in the house with any device with a simple and intelligent interface.  
 
 The Application is build with AngularJS and a NodeJS backend.
