@@ -1,7 +1,7 @@
-# Angular1 Node Voice Automation
+# Angular1 Node Home Automation
 HomeNet is a home automation network that allows you to incorporate all your home automation tasks into one central, easy to use location.  The idea is to control everything in the house with any device with a simple and intelligent interface.  
 
-The Application is build with AngularJS and a NodeJS backend.
+The application is built with AngularJS and a NodeJS backend.
 
 I have utilized Grunt, Bower and NPM within this as a task runner and package manager which simplifies running and building the application.
 
